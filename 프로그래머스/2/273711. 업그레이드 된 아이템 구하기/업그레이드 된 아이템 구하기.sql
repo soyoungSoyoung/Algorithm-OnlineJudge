@@ -1,0 +1,11 @@
+with A as (
+select ITEM_TREE.ITEM_ID, PARENT_ITEM_ID
+from ITEM_INFO inner join ITEM_TREE 
+    on ITEM_INFO.ITEM_ID = ITEM_TREE.PARENT_ITEM_ID
+where RARITY = 'RARE'
+)
+
+select A.ITEM_ID, ITEM_NAME, RARITY
+from A inner join ITEM_INFO 
+on A.ITEM_ID = ITEM_INFO.ITEM_ID
+order by A.ITEM_ID desc
